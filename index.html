@@ -6,36 +6,39 @@
     <title>Your Name - Portfolio</title>
     <style>
       body {
-        font-family: "Arial", sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f4f4f4;
+        font-family: "Arial", sans-serif;
+        background: url("https://picsum.photos/2000/3000") no-repeat center
+          center fixed;
+        background-size: cover;
+        color: #fff;
+        animation: fadeIn 1s ease-in-out;
       }
 
-      header {
+      header,
+      footer {
         background-color: #333;
-        color: white;
+        padding: 20px;
         text-align: center;
-        padding: 1em;
+        animation: slideInDown 1s ease-in-out;
       }
 
       section {
-        max-width: 800px;
-        margin: 20px auto;
         padding: 20px;
-        background-color: white;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        margin: 20px;
+        animation: fadeInUp 1s ease-in-out;
       }
 
       h1,
-      h2,
-      h3 {
-        color: #333;
+      h2 {
+        margin: 0;
       }
 
       p {
-        line-height: 1.6;
+        line-height: 1.5;
       }
 
       ul {
@@ -44,21 +47,76 @@
       }
 
       li {
-        margin-bottom: 5px;
+        margin-bottom: 10px;
       }
 
-      footer {
+      .card-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        overflow: hidden;
+      }
+
+      .card {
+        width: 300px;
         background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 1em;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
+        color: #fff;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transform: translateY(50px);
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+      }
+
+      .card:hover {
+        transform: translateY(0);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInDown {
+        from {
+          transform: translateY(-50px);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes cardAnimation {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     </style>
   </head>
-
   <body>
     <header>
       <h1>Sanjay Kumar</h1>
@@ -68,17 +126,17 @@
       </p>
     </header>
 
-    <section>
+    <section id="about">
       <h2>About Me</h2>
       <p>
         Welcome to my portfolio! I am a passionate machine learning developer
         with expertise in Python backend development, deep learning, and natural
-        language processing (NLP). I enjoy tackling complex problems and
-        creating innovative solutions.
+        language processing. Let's turn ideas into solutions using cutting-edge
+        technologies.
       </p>
     </section>
 
-    <section>
+    <section id="skills">
       <h2>Skills</h2>
       <ul>
         <li>Machine Learning</li>
@@ -88,21 +146,96 @@
       </ul>
     </section>
 
-    <section>
+    <section id="projects">
       <h2>Projects</h2>
-      <p>Here are some of my notable projects:</p>
-      <ul>
-        <li>Project 1: [Project Title]</li>
-        <li>Project 2: [Project Title]</li>
-        <!-- Add more projects as needed -->
-      </ul>
+      <div class="card-container">
+        <div class="card" style="animation: cardAnimation 0.5s ease-in-out">
+          <h3>Predictive Maintenance for Industrial Equipment</h3>
+          <p>
+            Develop a machine learning model that utilizes sensor data to
+            predict potential failures in industrial machinery before they
+            occur. By analyzing historical data and detecting patterns
+            indicative of impending issues, this project aims to optimize
+            maintenance schedules, minimize downtime, and reduce operational
+            costs for manufacturing plants.
+          </p>
+        </div>
+        <div
+          class="card"
+          style="animation: cardAnimation 0.5s ease-in-out 0.2s"
+        >
+          <h3>Healthcare Fraud Detection System</h3>
+          <p>
+            Build a robust machine learning solution to identify and flag
+            potential fraudulent activities in healthcare insurance claims.
+            Utilizing advanced anomaly detection and classification techniques,
+            the system aims to enhance the accuracy of fraud detection,
+            ultimately helping healthcare providers save costs and maintain the
+            integrity of their services.
+          </p>
+        </div>
+        <div
+          class="card"
+          style="animation: cardAnimation 0.5s ease-in-out 0.4s"
+        >
+          <h3>Sentiment Analysis for Social Media</h3>
+          <p>
+            Create a sentiment analysis model for social media posts to
+            automatically categorize user opinions as positive, negative, or
+            neutral. The project involves natural language processing (NLP)
+            techniques to analyze text data and can be extended to provide
+            insights into public opinions, brand sentiment, and trending topics
+            on popular social media platforms.
+          </p>
+        </div>
+        <div
+          class="card"
+          style="animation: cardAnimation 0.5s ease-in-out 0.4s"
+        >
+          <h3>Smart Home Energy Management</h3>
+          <p>
+            Develop a machine learning solution that optimizes energy
+            consumption in smart homes. The model will analyze historical usage
+            patterns, weather forecasts, and user preferences to dynamically
+            control devices such as thermostats and smart appliances. The goal
+            is to enhance energy efficiency, reduce utility costs, and
+            contribute to a more sustainable and eco-friendly living
+            environment.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Information</h2>
+      <p>
+        Feel free to reach out to me via email at:
+        <a href="mailto:your.email@example.com" style="color: #fff"
+          >sanjaykumar.nitsgr@gmail.com</a
+        >
+      </p>
     </section>
 
     <footer>
-      <p>
-        Contact: sanjaykumar.nitsgr@gmail.com | LinkedIn: linkedin.com/in/imskumarr |
-        GitHub: github.com/keedabyte
-      </p>
+      <p>&copy; 2024 Sanjay Kumar - Portfolio</p>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        window.addEventListener("scroll", reveal);
+        function reveal() {
+          var cards = document.querySelectorAll(".card");
+          for (var i = 0; i < cards.length; i++) {
+            var windowHeight = window.innerHeight;
+            var cardTop = cards[i].getBoundingClientRect().top;
+            var cardPoint = 150;
+            if (cardTop < windowHeight - cardPoint) {
+              cards[i].style.transform = "translateY(0)";
+              cards[i].style.opacity = "1";
+            }
+          }
+        }
+      });
+    </script>
   </body>
 </html>
